@@ -29,7 +29,7 @@ import Scrollbar from '../components/scrollbar';
 // sections
 import { UserListHead, UserListToolbar } from '../sections/@dashboard/user';
 // api
-import { getModels } from '../services/api';
+import { getBlocks } from '../services/api';
 
 // ----------------------------------------------------------------------
 
@@ -53,25 +53,6 @@ function descendingComparator(a, b, orderBy) {
   return 0;
 }
 
-function getComparator(order, orderBy) {
-  return order === 'desc'
-    ? (a, b) => descendingComparator(a, b, orderBy)
-    : (a, b) => -descendingComparator(a, b, orderBy);
-}
-
-function applySortFilter(array, comparator, query) {
-  const stabilizedThis = array.map((el, index) => [el, index]);
-  stabilizedThis.sort((a, b) => {
-    const order = comparator(a[0], b[0]);
-    if (order !== 0) return order;
-    return a[1] - b[1];
-  });
-  if (query) {
-    return filter(array, (_user) => _user.name.toLowerCase().indexOf(query.toLowerCase()) !== -1);
-  }
-  return stabilizedThis.map((el) => el[0]);
-}
-
 function skeletonRow(rowLength, rowCount = 5) {
   return [...Array(rowCount)].map((_, i) => (
     <TableRow key={i}>
@@ -84,7 +65,7 @@ function skeletonRow(rowLength, rowCount = 5) {
   ));
 }
 
-export default function ModelsPage() {
+export default function BlocksPage() {
   const [open, setOpen] = useState(null);
 
   const [items, setItems] = useState(null);
@@ -157,7 +138,7 @@ export default function ModelsPage() {
   };
 
   useEffect(() => {
-    getModels().then(setItems);
+    getBlocks().then(setItems);
   }, []);
 
   const emptyRows = page > 0 ? Math.max(0, (1 + page) * rowsPerPage - items.length) : 0;
@@ -165,16 +146,16 @@ export default function ModelsPage() {
   return (
     <>
       <Helmet>
-        <title> Models </title>
+        <title> Blocks </title>
       </Helmet>
 
       <Container>
         <Stack direction="row" alignItems="center" justifyContent="space-between" mb={5}>
           <Typography variant="h4" gutterBottom>
-            Models
+            Blocks
           </Typography>
-          <Button variant="contained" startIcon={<Iconify icon="eva:plus-fill" />} href="/dashboard/models-create">
-            New Model
+          <Button variant="contained" startIcon={<Iconify icon="eva:plus-fill" />} href="/dashboard/blocks-create">
+            New Block
           </Button>
         </Stack>
 
@@ -290,7 +271,7 @@ export default function ModelsPage() {
           },
         }}
       >
-        <MenuItem component={NavLink} to={`/dashboard/models/${open?.id}`}>
+        <MenuItem component={NavLink} to={`/dashboard/blocks/${open?.id}`}>
           <Iconify icon={'eva:edit-fill'} sx={{ mr: 2 }} />
           Edit
         </MenuItem>

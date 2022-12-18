@@ -12,6 +12,9 @@ import DashboardAppPage from './pages/DashboardAppPage';
 import ModelsPage from './pages/ModelsPage';
 import ModelsCreatePage from './pages/ModelsCreatePage';
 import ModelsEditPage from './pages/ModelsEditPage';
+import BlocksPage from './pages/BlocksPage';
+import BlocksCreatePage from './pages/BlocksCreatePage';
+import BlocksEditPage from './pages/BlocksEditPage';
 
 // ----------------------------------------------------------------------
 
@@ -26,7 +29,9 @@ export default function Router() {
         { path: 'models', element: <ModelsPage /> },
         { path: 'models-create', element: <ModelsCreatePage /> },
         { path: 'models/:id', element: <ModelsEditPage /> },
-        { path: 'blocks', element: <ModelsPage /> },
+        { path: 'blocks', element: <BlocksPage /> },
+        { path: 'blocks-create', element: <BlocksCreatePage /> },
+        { path: 'blocks/:id', element: <BlocksEditPage /> },
         { path: 'user', element: <UserPage /> },
         { path: 'products', element: <ProductsPage /> },
         { path: 'blog', element: <BlogPage /> },

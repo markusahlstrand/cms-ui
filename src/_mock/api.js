@@ -1,3 +1,14 @@
+import { faker } from '@faker-js/faker';
+
+const models = [...Array(24)].map((_, index) => ({
+  id: faker.datatype.uuid(),
+  image: `/assets/images/covers/cover_${index + 1}.jpg`,
+  createdAt: faker.date.past(),
+  modifiedAt: faker.date.past(),
+  name: faker.word.noun(),
+  description: faker.lorem.paragraph(),
+}));
+
 // const apiUrl = 'http://localhost:8787';
 const apiUrl = 'https://cloudworker-cms.sesamy-dev.workers.dev';
 
@@ -10,6 +21,7 @@ export async function getModels() {
     createdAt: new Date(),
     modifiedAt: new Date(),
   }));
+  //   return models;
 }
 
 export async function getModel(id) {
@@ -21,6 +33,8 @@ export async function getModel(id) {
     createdAt: new Date(),
     modifiedAt: new Date(),
   };
+
+  //   return models.find((model) => model.id === id);
 }
 
 export async function saveModel(id, model) {
@@ -31,6 +45,12 @@ export async function saveModel(id, model) {
       'content-type': 'application/json',
     },
   });
+  //   const index = models.findIndex((model) => model.id === id);
+  //   models[index] = {
+  //   ...models[index],
+  //     ...value,
+  //     modifiedAt: new Date(),
+  //   };
 }
 
 export async function createModel(model) {
@@ -41,46 +61,10 @@ export async function createModel(model) {
       'content-type': 'application/json',
     },
   });
-}
-
-export async function getBlocks() {
-  const response = await fetch(`${apiUrl}/blocks`);
-  const body = await response.json();
-
-  return body.map((item) => ({
-    ...item,
-    createdAt: new Date(),
-    modifiedAt: new Date(),
-  }));
-}
-
-export async function getBlock(id) {
-  const response = await fetch(`${apiUrl}/blocks/${id}`);
-  const body = await response.json();
-
-  return {
-    ...body,
-    createdAt: new Date(),
-    modifiedAt: new Date(),
-  };
-}
-
-export async function saveBlock(id, block) {
-  await fetch(`${apiUrl}/blocks/${id}`, {
-    method: 'PATCH',
-    body: JSON.stringify(block),
-    headers: {
-      'content-type': 'application/json',
-    },
-  });
-}
-
-export async function createBlock(block) {
-  await fetch(`${apiUrl}/blocks`, {
-    method: 'POST',
-    body: JSON.stringify(block),
-    headers: {
-      'content-type': 'application/json',
-    },
-  });
+  //   const index = models.findIndex((model) => model.id === id);
+  //   models[index] = {
+  //   ...models[index],
+  //     ...value,
+  //     modifiedAt: new Date(),
+  //   };
 }
