@@ -22,7 +22,7 @@ export default function ModelsPage() {
 
   const handleSave = () => {
     createBlock(change).then(() => {
-      navigate('/dashboard/mlocks');
+      navigate('/dashboard/blocks');
     });
   };
 

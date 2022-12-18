@@ -211,9 +211,9 @@ export default function ModelsPage() {
 
                             <TableCell align="left">{name}</TableCell>
 
-                            <TableCell align="left">{createdAt.toISOString()}</TableCell>
+                            <TableCell align="left">{createdAt}</TableCell>
 
-                            <TableCell align="left">{modifiedAt.toISOString()}</TableCell>
+                            <TableCell align="left">{modifiedAt}</TableCell>
 
                             <TableCell align="right">
                               <IconButton size="large" color="inherit" onClick={(event) => handleOpenMenu(event, id)}>

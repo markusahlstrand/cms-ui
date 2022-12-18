@@ -5,22 +5,14 @@ export async function getModels() {
   const response = await fetch(`${apiUrl}/models`);
   const body = await response.json();
 
-  return body.map((item) => ({
-    ...item,
-    createdAt: new Date(),
-    modifiedAt: new Date(),
-  }));
+  return body;
 }
 
 export async function getModel(id) {
   const response = await fetch(`${apiUrl}/models/${id}`);
   const body = await response.json();
 
-  return {
-    ...body,
-    createdAt: new Date(),
-    modifiedAt: new Date(),
-  };
+  return body;
 }
 
 export async function saveModel(id, model) {
@@ -47,22 +39,14 @@ export async function getBlocks() {
   const response = await fetch(`${apiUrl}/blocks`);
   const body = await response.json();
 
-  return body.map((item) => ({
-    ...item,
-    createdAt: new Date(),
-    modifiedAt: new Date(),
-  }));
+  return body;
 }
 
 export async function getBlock(id) {
   const response = await fetch(`${apiUrl}/blocks/${id}`);
   const body = await response.json();
 
-  return {
-    ...body,
-    createdAt: new Date(),
-    modifiedAt: new Date(),
-  };
+  return body;
 }
 
 export async function saveBlock(id, block) {
