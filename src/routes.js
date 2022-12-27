@@ -15,6 +15,7 @@ import ModelsEditPage from './pages/ModelsEditPage';
 import BlocksPage from './pages/BlocksPage';
 import BlocksCreatePage from './pages/BlocksCreatePage';
 import BlocksEditPage from './pages/BlocksEditPage';
+import FieldsCreatePage from './pages/FieldsCreatePage';
 
 // ----------------------------------------------------------------------
 
@@ -32,6 +33,7 @@ export default function Router() {
         { path: 'blocks', element: <BlocksPage /> },
         { path: 'blocks-create', element: <BlocksCreatePage /> },
         { path: 'blocks/:id', element: <BlocksEditPage /> },
+        { path: 'fields-create', element: <FieldsCreatePage /> },
         { path: 'user', element: <UserPage /> },
         { path: 'products', element: <ProductsPage /> },
         { path: 'blog', element: <BlogPage /> },

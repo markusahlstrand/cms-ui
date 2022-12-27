@@ -68,3 +68,20 @@ export async function createBlock(block) {
     },
   });
 }
+
+export async function createField(field) {
+  await fetch(`${apiUrl}/fields`, {
+    method: 'POST',
+    body: JSON.stringify(field),
+    headers: {
+      'content-type': 'application/json',
+    },
+  });
+}
+
+export async function getFieldsForModel(modelId) {
+  const response = await fetch(`${apiUrl}/fields?modelId=${modelId}`);
+  const body = await response.json();
+
+  return body;
+}
