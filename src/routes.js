@@ -1,4 +1,5 @@
 import { Navigate, useRoutes } from 'react-router-dom';
+
 // layouts
 import DashboardLayout from './layouts/dashboard';
 import SimpleLayout from './layouts/simple';
@@ -16,6 +17,8 @@ import BlocksPage from './pages/BlocksPage';
 import BlocksCreatePage from './pages/BlocksCreatePage';
 import BlocksEditPage from './pages/BlocksEditPage';
 import FieldsCreatePage from './pages/FieldsCreatePage';
+import FieldsEditPage from './pages/FieldsEditPage';
+import { RequireAuth } from './components/auth';
 
 // ----------------------------------------------------------------------
 
@@ -23,7 +26,11 @@ export default function Router() {
   const routes = useRoutes([
     {
       path: '/dashboard',
-      element: <DashboardLayout />,
+      element: (
+        <RequireAuth>
+          <DashboardLayout />
+        </RequireAuth>
+      ),
       children: [
         { element: <Navigate to="/dashboard/app" />, index: true },
         { path: 'app', element: <DashboardAppPage /> },
@@ -34,6 +41,7 @@ export default function Router() {
         { path: 'blocks-create', element: <BlocksCreatePage /> },
         { path: 'blocks/:id', element: <BlocksEditPage /> },
         { path: 'fields-create', element: <FieldsCreatePage /> },
+        { path: 'fields/:id', element: <FieldsEditPage /> },
         { path: 'user', element: <UserPage /> },
         { path: 'products', element: <ProductsPage /> },
         { path: 'blog', element: <BlogPage /> },

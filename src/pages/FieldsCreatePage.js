@@ -20,12 +20,11 @@ import { createField } from '../services/api';
 // ----------------------------------------------------------------------
 
 export default function FieldsCreatePage() {
-  const [change, setChange] = useState({});
-
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
 
   const modelId = searchParams.get('modelId');
+  const [change, setChange] = useState({ modelId });
 
   const handleChange = (event) => {
     const { type, name, value } = event.target;
@@ -67,11 +66,11 @@ export default function FieldsCreatePage() {
 
           <TextField name="name" label="Name" onChange={handleChange} required />
 
-          <TextField name="description" label="Description" type="text" multiline rows={8} onChange={handleChange} />
+          <TextField name="description" label="Description" type="text" multiline rows={2} onChange={handleChange} />
 
           <TextField name="order" label="Order" type="number" onChange={handleChange} />
 
-          <TextField name="modelId" label="Model Id" type="number" onChange={handleChange} />
+          <TextField name="modelId" label="Model Id" type="number" disabled value={modelId} />
         </Stack>
 
         <Divider sx={{ my: 3 }} />

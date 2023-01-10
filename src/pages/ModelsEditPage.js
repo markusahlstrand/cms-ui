@@ -201,7 +201,7 @@ export default function ModelsEditPage() {
           },
         }}
       >
-        <MenuItem component={NavLink} to={`/dashboard/models/${open?.id}`}>
+        <MenuItem component={NavLink} to={`/dashboard/fields/${open?.id}`}>
           <Iconify icon={'eva:edit-fill'} sx={{ mr: 2 }} />
           Edit
         </MenuItem>

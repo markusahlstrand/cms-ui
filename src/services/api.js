@@ -69,6 +69,14 @@ export async function createBlock(block) {
   });
 }
 
+export async function getField(fieldId) {
+  const response = await fetch(`${apiUrl}/fields/${fieldId}`);
+
+  const body = await response.json();
+
+  return body;
+}
+
 export async function createField(field) {
   await fetch(`${apiUrl}/fields`, {
     method: 'POST',
